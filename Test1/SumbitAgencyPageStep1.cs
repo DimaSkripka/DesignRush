@@ -11,16 +11,16 @@ using System.Threading.Tasks;
 using System;
 
 
-namespace Test1
+namespace SubmitAgencyPageObject
 {
-    public class SumbitAgencyStep1
+    public class SumbitAgencyPageStep1
     {
         private readonly IWebDriver driver;
         public WebDriverWait wait;
 
         private readonly string url = @"http://designrush.devplatform2.com/submit/agency/step/1";
 
-        public SumbitAgencyStep1(IWebDriver browser)
+        public SumbitAgencyPageStep1(IWebDriver browser)
         {
             this.driver = browser;
             this.driver.Manage().Window.Maximize();

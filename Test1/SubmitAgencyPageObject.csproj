@@ -62,8 +62,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SumbitAgencyStep1.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="SumbitAgencyPageStep1.cs" />
+    <Compile Include="SubmitHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

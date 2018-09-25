@@ -9,10 +9,10 @@ using OpenQA.Selenium.Support.Events;
 using System;
 
 
-namespace Test1
+namespace SubmitAgencyPageObject
 {
     [TestClass]
-    public class UnitTest1
+    public class SubmitHelper
     {
 
         public IWebDriver driver { get; set; }
@@ -34,7 +34,7 @@ namespace Test1
         [TestMethod]
         public void SubmitStep1()
         {
-            SumbitAgencyStep1 step1 = new SumbitAgencyStep1(this.driver);
+            SumbitAgencyPageStep1 step1 = new SumbitAgencyPageStep1(this.driver);
             step1.Navigate();
             step1.Submit("DmitryQaTest123", "SkripkaQaTest123", @"dimaskripka1992+qwe123qwe123@gmail.com", @"+380932967718", @"Qwerty123!", @"Qwerty123!");
             driver.FindElements(By.ClassName("alertify-button"));
