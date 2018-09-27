@@ -127,14 +127,22 @@ namespace SubmitAgencyPageObject
         //    driver.FindElement(By.Id("select2-phone_country_code-lz-container")).Click();
         //    driver.FindElement(By.Id("mCSB_17_container")).FindElements(By.TagName("li"));
         //}
-        public void SaveAndContinue()
+        public void GetCountryCodeLi()
         {
-            driver.FindElement(By.Id("select2-phone_country_code-lz-container")).Click();
-            driver.FindElement(By.Id("mCSB_17_container")).FindElements(By.TagName("li"));
 
             ICollection<IWebElement> liElements = driver.FindElement(By.Id("mCSB_17_container")).FindElements(By.TagName("li"));
 
-            
+            List<IWebElement> li = new List<IWebElement>();
+
+            Random rnd = new Random();
+            int rndValue = rnd.Next();
+
+            foreach (var item in liElements)
+            {
+                liElements = li;
+            }
+
+            li[rndValue].Click();
         }
 
     }
