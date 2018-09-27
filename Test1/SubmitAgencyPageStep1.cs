@@ -130,19 +130,13 @@ namespace SubmitAgencyPageObject
         public void GetCountryCodeLi()
         {
 
-            ICollection<IWebElement> liElements = driver.FindElement(By.Id("mCSB_17_container")).FindElements(By.TagName("li"));
-
-            List<IWebElement> li = new List<IWebElement>();
+            List<IWebElement> li = new List<IWebElement>(driver.FindElement(By.Id("mCSB_17_container")).FindElements(By.TagName("li")));
 
             Random rnd = new Random();
-            int rndValue = rnd.Next();
-
-            foreach (var item in liElements)
-            {
-                liElements = li;
-            }
+            int rndValue = rnd.Next(0, li.Count);
 
             li[rndValue].Click();
+
         }
 
     }
