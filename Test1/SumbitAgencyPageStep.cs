@@ -13,14 +13,14 @@ using System;
 
 namespace SubmitAgencyPageObject
 {
-    public class SumbitAgencyPageStep1
+    public class SumbitAgencyPage
     {
         private readonly IWebDriver driver;
         public WebDriverWait wait;
 
         private readonly string url = @"http://designrush.devplatform2.com/submit/agency/step/1";
 
-        public SumbitAgencyPageStep1(IWebDriver browser)
+        public SumbitAgencyPage(IWebDriver browser)
         {
             this.driver = browser;
             this.driver.Manage().Window.Maximize();
@@ -68,7 +68,7 @@ namespace SubmitAgencyPageObject
             this.phoneField.Clear();
             this.phoneField.SendKeys(phone);
 
-            this.emailField.Clear();
+            this.passwordField.Clear();
             this.passwordField.SendKeys(password);
 
             this.passwordConfirmationField.Clear();

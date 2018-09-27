@@ -25,19 +25,22 @@ namespace SubmitAgencyPageObject
             this.wait = new WebDriverWait(this.driver, TimeSpan.FromSeconds(30));
         }
 
-        [TestCleanup]
-        public void TeardownTest()
-        {
-            this.driver.Quit();
-        }
+        //[TestCleanup]
+        //public void TeardownTest()
+        //{
+        //    this.driver.Quit();
+        //}
 
         [TestMethod]
         public void SubmitStep1()
         {
-            SumbitAgencyPageStep1 step1 = new SumbitAgencyPageStep1(this.driver);
-            step1.Navigate();
-            step1.Submit("DmitryQaTest123", "SkripkaQaTest123", @"dimaskripka1992+qwe123qwe123@gmail.com", @"+380932967718", @"Qwerty123!", @"Qwerty123!");
-            driver.FindElements(By.ClassName("alertify-button"));
+            SumbitAgencyPage submitAgency = new SumbitAgencyPage(this.driver);
+            submitAgency.Navigate();
+            submitAgency.Submit("DmitryQaTest3", "SkripkaQaTest3", "dimaskripka1992+3@gmail.com", @"+380932967718", @"Qwerty123!", @"Qwerty123!");
+            wait.Until(ExpectedConditions.ElementToBeClickable(By.ClassName("alertify-button"))).Click();
+            Thread.Sleep(4000);
+            SubmitAgencyPageStep1 step1 = new SubmitAgencyPageStep1(this.driver);
+            step1.SaveAndContinue();
         }
     }
 }
