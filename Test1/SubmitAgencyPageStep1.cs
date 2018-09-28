@@ -75,58 +75,65 @@ namespace SubmitAgencyPageObject
         public IWebElement saveBtn { get; set; }
 
 
-        //public void SaveAndContinue(string agencyName, string agencyWebsite, string agencyEmail, string countryCode, string agencyPhone, string agencyYearFounded, string hourlyRate, string employee, string minimumBudget, string facebook, string twitter, string linkedIn, string googlePlus, string instagram, string youTube)
-        //{
-        //    this.agencyNameField.Clear();
-        //    this.agencyNameField.SendKeys(agencyName);
+        public void SaveAndContinue(string agencyName, string agencyWebsite, string agencyEmail, string countryCode, string agencyPhone, string agencyYearFounded, string hourlyRate, string employee, string minimumBudget, string facebook, string twitter, string linkedIn, string googlePlus, string instagram, string youTube)
+        {
+            this.agencyNameField.Clear();
+            this.agencyNameField.SendKeys(agencyName);
 
-        //    this.agencyWebsiteField.Clear();
-        //    this.agencyWebsiteField.SendKeys(agencyWebsite);
+            this.agencyWebsiteField.Clear();
+            this.agencyWebsiteField.SendKeys(agencyWebsite);
 
-        //    this.agencyEmailField.Clear();
-        //    this.agencyEmailField.SendKeys(agencyEmail);
+            this.agencyEmailField.Clear();
+            this.agencyEmailField.SendKeys(agencyEmail);
 
-        //    this.countryCodeSpan.Click();
-        //    //сделать загрузку всех значений поп-апа в коллекцию, и выбор рандомного элемента
-
-
-        //    this.agencyPhoneField.Clear();
-        //    this.agencyPhoneField.SendKeys(agencyPhone);
-
-        //    this.agencyYearFoundedField.Clear();
-        //    this.agencyYearFoundedField.SendKeys(agencyYearFounded);
-
-        //    this.agencyHourlyRate.Clear();
-        //    this.agencyHourlyRate.SendKeys(hourlyRate);
-
-        //    this.agencyEmployees.Click();
-        //    //сделать загрузку всех значений поп-апа в коллекцию, и выбор рандомного элемента
-
-        //    this.agencyMinimumBudget.Click();
-        //    //сделать загрузку всех значений поп-апа в коллекцию, и выбор рандомного элемента
-
-        //    this.agencySoialFB.Clear();
-        //    this.agencySoialFB.SendKeys(facebook);
-
-        //    this.agencySoialTW.Clear();
-        //    this.agencySoialTW.SendKeys(twitter);
-
-        //    this.agencySoialIN.Clear();
-        //    this.agencySoialIN.SendKeys(linkedIn);
-
-        //    this.agencySoialGPlus.Clear();
-        //    this.agencySoialGPlus.SendKeys(googlePlus);
-
-        //    this.agencySoialInst.Clear();
-        //    this.agencySoialInst.SendKeys(instagram);
-
-        //    this.agencySoialYouTb.Clear();
-        //    this.agencySoialYouTb.SendKeys(youTube);
+            //this.countryCodeSpan.Click();
+            //сделать загрузку всех значений поп-апа в коллекцию, и выбор рандомного элемента
 
 
-        //    driver.FindElement(By.Id("select2-phone_country_code-lz-container")).Click();
-        //    driver.FindElement(By.Id("mCSB_17_container")).FindElements(By.TagName("li"));
-        //}
+            this.agencyPhoneField.Clear();
+            this.agencyPhoneField.SendKeys(agencyPhone);
+
+            this.agencyYearFoundedField.Clear();
+            this.agencyYearFoundedField.SendKeys(agencyYearFounded);
+
+            this.agencyHourlyRate.Clear();
+            this.agencyHourlyRate.SendKeys(hourlyRate);
+
+            //this.agencyEmployees.Click();
+            //сделать загрузку всех значений поп-апа в коллекцию, и выбор рандомного элемента
+
+            //this.agencyMinimumBudget.Click();
+            //сделать загрузку всех значений поп-апа в коллекцию, и выбор рандомного элемента
+
+            this.agencySoialFB.Clear();
+            this.agencySoialFB.SendKeys(facebook);
+
+            this.agencySoialTW.Clear();
+            this.agencySoialTW.SendKeys(twitter);
+
+            this.agencySoialIN.Clear();
+            this.agencySoialIN.SendKeys(linkedIn);
+
+            this.agencySoialGPlus.Clear();
+            this.agencySoialGPlus.SendKeys(googlePlus);
+
+            this.agencySoialInst.Clear();
+            this.agencySoialInst.SendKeys(instagram);
+
+            this.agencySoialYouTb.Clear();
+            this.agencySoialYouTb.SendKeys(youTube);
+
+
+            driver.FindElement(By.Id("select2-phone_country_code-lz-container")).Click();
+            driver.FindElement(By.Id("mCSB_17_container")).FindElements(By.TagName("li"));
+        }
+
+        public void setSelector(string fstSelector, string scndSelector)
+        {
+
+        }
+
+
         public void GetCountryCodeLi()
         {
 
@@ -138,7 +145,6 @@ namespace SubmitAgencyPageObject
             li[rndValue].Click();
 
         }
-
     }
 
 
