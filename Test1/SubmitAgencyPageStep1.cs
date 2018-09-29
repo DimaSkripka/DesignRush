@@ -35,9 +35,6 @@ namespace SubmitAgencyPageObject
         [FindsBy(How = How.Name, Using = "email")]
         public IWebElement agencyEmailField { get; set; }
 
-        [FindsBy(How = How.Id, Using = "select2-phone_country_code-lz-container")]
-        public IWebElement countryCodeSpan { get; set; }
-
         [FindsBy(How = How.Name, Using = "phone")]
         public IWebElement agencyPhoneField { get; set; }
 
@@ -46,12 +43,6 @@ namespace SubmitAgencyPageObject
 
         [FindsBy(How = How.Name, Using = "hourly_rate")]
         public IWebElement agencyHourlyRate { get; set; }
-
-        [FindsBy(How = How.Id, Using = "employee_id")]
-        public IWebElement agencyEmployees { get; set; }
-
-        [FindsBy(How = How.Name, Using = "min_budget")]
-        public IWebElement agencyMinimumBudget { get; set; }
 
         [FindsBy(How = How.Name, Using = "social_networks_fb")]
         public IWebElement agencySoialFB { get; set; }
@@ -74,9 +65,22 @@ namespace SubmitAgencyPageObject
         [FindsBy(How = How.Id, Using = "agency-step-submit-btn")]
         public IWebElement saveBtn { get; set; }
 
-
-        public void SaveAndContinue(string agencyName, string agencyWebsite, string agencyEmail, string countryCode, string agencyPhone, string agencyYearFounded, string hourlyRate, string employee, string minimumBudget, string facebook, string twitter, string linkedIn, string googlePlus, string instagram, string youTube)
+        public void GetLi()
         {
+
+            List<IWebElement> li = new List<IWebElement>(driver.FindElement(By.ClassName("select2-results__options")).FindElements(By.TagName("li")));
+
+            Random rnd = new Random();
+            int rndValue = rnd.Next(0, li.Count);
+
+            li[rndValue].Click();
+
+        }
+
+        public void SaveAndContinue(string agencyName, string agencyWebsite, string agencyEmail,string agencyPhone, string agencyYearFounded, string hourlyRate, string facebook, string twitter, string linkedIn, string googlePlus, string instagram, string youTube)
+        {
+            List<IWebElement> spanElements = new List<IWebElement>(driver.FindElements(By.ClassName("select2-selection__arrow")));
+
             this.agencyNameField.Clear();
             this.agencyNameField.SendKeys(agencyName);
 
@@ -86,9 +90,8 @@ namespace SubmitAgencyPageObject
             this.agencyEmailField.Clear();
             this.agencyEmailField.SendKeys(agencyEmail);
 
-            //this.countryCodeSpan.Click();
-            //сделать загрузку всех значений поп-апа в коллекцию, и выбор рандомного элемента
-
+            spanElements[0].Click();
+            GetLi();
 
             this.agencyPhoneField.Clear();
             this.agencyPhoneField.SendKeys(agencyPhone);
@@ -99,11 +102,11 @@ namespace SubmitAgencyPageObject
             this.agencyHourlyRate.Clear();
             this.agencyHourlyRate.SendKeys(hourlyRate);
 
-            //this.agencyEmployees.Click();
-            //сделать загрузку всех значений поп-апа в коллекцию, и выбор рандомного элемента
+            spanElements[1].Click();
+            GetLi();
 
-            //this.agencyMinimumBudget.Click();
-            //сделать загрузку всех значений поп-апа в коллекцию, и выбор рандомного элемента
+            spanElements[2].Click();
+            GetLi();
 
             this.agencySoialFB.Clear();
             this.agencySoialFB.SendKeys(facebook);
@@ -123,29 +126,7 @@ namespace SubmitAgencyPageObject
             this.agencySoialYouTb.Clear();
             this.agencySoialYouTb.SendKeys(youTube);
 
-
-            driver.FindElement(By.Id("select2-phone_country_code-lz-container")).Click();
-            driver.FindElement(By.Id("mCSB_17_container")).FindElements(By.TagName("li"));
-        }
-
-        public void setSelector(string fstSelector, string scndSelector)
-        {
-
-        }
-
-
-        public void GetCountryCodeLi()
-        {
-
-            List<IWebElement> li = new List<IWebElement>(driver.FindElement(By.Id("mCSB_17_container")).FindElements(By.TagName("li")));
-
-            Random rnd = new Random();
-            int rndValue = rnd.Next(0, li.Count);
-
-            li[rndValue].Click();
-
+            this.saveBtn.Click();
         }
     }
-
-
 }

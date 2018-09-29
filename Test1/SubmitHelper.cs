@@ -36,11 +36,12 @@ namespace SubmitAgencyPageObject
         {
             SumbitAgencyPage submitAgency = new SumbitAgencyPage(this.driver);
             submitAgency.Navigate();
-            submitAgency.Submit("DmitryQaTest3", "SkripkaQaTest3", "dimaskripka1992+3@gmail.com", @"+380932967718", @"Qwerty123!", @"Qwerty123!");
+            submitAgency.Submit("DmitryQaTest86", "SkripkaQaTest86", "dimaskripka1992+86@gmail.com", @"+380932967718", @"Qwerty123!", @"Qwerty123!");
             wait.Until(ExpectedConditions.ElementToBeClickable(By.ClassName("alertify-button"))).Click();
             Thread.Sleep(4000);
             SubmitAgencyPageStep1 step1 = new SubmitAgencyPageStep1(this.driver);
-            step1.SaveAndContinue();
+            step1.SaveAndContinue("dqqweassdwdqw",@"https://qwdqwd.com","dimaskripka1992+agencyzxc123zxc@gmail.zom","1231231233","1850","77", @"https://www.facebook.com/dmitriy.skripka.3", @"https://twitter.com/dmitry_skripka", @"https://www.linkedin.com/in/dmitry-skripka-a4852b124/", @"https://plus.google.com/u/1/117367210483517711675", @"https://www.instagram.com/angrydmitry/", @"https://www.youtube.com/channel/UCTL3HvVv-q5eRi_6rLnv1Bw?view_as=subscriber");
+            wait.Until(ExpectedConditions.ElementToBeClickable(By.ClassName("alertify-button"))).Click();
         }
     }
 }
