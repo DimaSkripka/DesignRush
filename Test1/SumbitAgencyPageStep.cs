@@ -18,7 +18,8 @@ namespace SubmitAgencyPageObject
         private readonly IWebDriver driver;
         public WebDriverWait wait;
 
-        private readonly string url = @"http://designrush.devplatform2.com/submit/agency/step/1";
+        private readonly string url = @"http://designrush.com/submit/agency/step/1";
+
 
         public SumbitAgencyPage(IWebDriver browser)
         {
@@ -26,6 +27,7 @@ namespace SubmitAgencyPageObject
             this.driver.Manage().Window.Maximize();
             PageFactory.InitElements(browser, this);
         }
+
 
         [FindsBy(How = How.Name, Using = "first_name")]
         public IWebElement nameField { get; set; }
@@ -54,6 +56,7 @@ namespace SubmitAgencyPageObject
             this.driver.Navigate().GoToUrl(this.url);
         }
 
+
         public void Submit(string name, string lastname, string email, string phone, string password, string passwordConfirmation)
         {
             this.nameField.Clear();
@@ -76,7 +79,6 @@ namespace SubmitAgencyPageObject
 
             this.submitButton.Click();
         }
-
         //public void iSSubmitSuccessful(bool isElementfound)
         //{
 
@@ -91,9 +93,5 @@ namespace SubmitAgencyPageObject
         //    }
         //    Assert.IsNotNull(isElementfound);
         //}
-
     }
-
-
-
 }

@@ -7,6 +7,8 @@ using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.PhantomJS;
 using OpenQA.Selenium.Support.Events;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 
 namespace SubmitAgencyPageObject
@@ -36,12 +38,21 @@ namespace SubmitAgencyPageObject
         {
             SumbitAgencyPage submitAgency = new SumbitAgencyPage(this.driver);
             submitAgency.Navigate();
-            submitAgency.Submit("DmitryQaTest86", "SkripkaQaTest86", "dimaskripka1992+86@gmail.com", @"+380932967718", @"Qwerty123!", @"Qwerty123!");
+            submitAgency.Submit("Karl8", "Jhonson8", "dimaskripka1992+KJ8@gmail.com", @"+380932967718", @"Qwerty123!", @"Qwerty123!");
             wait.Until(ExpectedConditions.ElementToBeClickable(By.ClassName("alertify-button"))).Click();
+
             Thread.Sleep(4000);
+
             SubmitAgencyPageStep1 step1 = new SubmitAgencyPageStep1(this.driver);
-            step1.SaveAndContinue("dqqweassdwdqw",@"https://qwdqwd.com","dimaskripka1992+agencyzxc123zxc@gmail.zom","1231231233","1850","77", @"https://www.facebook.com/dmitriy.skripka.3", @"https://twitter.com/dmitry_skripka", @"https://www.linkedin.com/in/dmitry-skripka-a4852b124/", @"https://plus.google.com/u/1/117367210483517711675", @"https://www.instagram.com/angrydmitry/", @"https://www.youtube.com/channel/UCTL3HvVv-q5eRi_6rLnv1Bw?view_as=subscriber");
+            step1.SaveAndContinue("KarlJhonsonAgency8",@"https://qwdqwd.com","dimaskripka1992+KJ8Agency@gmail.zom","1231231233","1850","77", @"https://www.facebook.com/dmitriy.skripka.3", @"https://twitter.com/dmitry_skripka", @"https://www.linkedin.com/in/dmitry-skripka-a4852b124/", @"https://plus.google.com/u/1/117367210483517711675", @"https://www.instagram.com/angrydmitry/", @"https://www.youtube.com/channel/UCTL3HvVv-q5eRi_6rLnv1Bw?view_as=subscriber");
             wait.Until(ExpectedConditions.ElementToBeClickable(By.ClassName("alertify-button"))).Click();
+
+            var options = new ChromeOptions();
+            options.AddArgument("no-sandbox");
+
+            SubmitAgencyPageStep2 step2 = new SubmitAgencyPageStep2(this.driver);
+            step2.uploadLogo(@"C:/Users/skripka/Desktop/New folder(2) /testupload.jpg");
+            step2.fillDesc("dqwqwdqwdqwdqwdqwdqw dqwdqwd qwdqwd qw");
         }
     }
 }

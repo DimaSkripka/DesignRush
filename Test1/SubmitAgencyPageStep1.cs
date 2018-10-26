@@ -20,11 +20,13 @@ namespace SubmitAgencyPageObject
         private readonly IWebDriver driver;
         public WebDriverWait wait;
 
+
         public SubmitAgencyPageStep1(IWebDriver browser)
         {
             this.driver = browser;
             PageFactory.InitElements(browser, this);
         }
+
 
         [FindsBy(How = How.Name, Using = "name")]
         public IWebElement agencyNameField { get; set; }
@@ -65,17 +67,17 @@ namespace SubmitAgencyPageObject
         [FindsBy(How = How.Id, Using = "agency-step-submit-btn")]
         public IWebElement saveBtn { get; set; }
 
+
         public void GetLi()
         {
-
             List<IWebElement> li = new List<IWebElement>(driver.FindElement(By.ClassName("select2-results__options")).FindElements(By.TagName("li")));
 
             Random rnd = new Random();
             int rndValue = rnd.Next(0, li.Count);
 
             li[rndValue].Click();
-
         }
+
 
         public void SaveAndContinue(string agencyName, string agencyWebsite, string agencyEmail,string agencyPhone, string agencyYearFounded, string hourlyRate, string facebook, string twitter, string linkedIn, string googlePlus, string instagram, string youTube)
         {
