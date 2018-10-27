@@ -27,8 +27,11 @@ namespace SubmitAgencyPageObject
         [FindsBy(How = How.Name, Using = "agency_logo")]
         public IWebElement agencyLogoUpload { get; set; }
 
+        [FindsBy(How = How.Id, Using = "tinymce")]
+        public IWebElement agencyDescriptionContent { get; set; }
+
         [FindsBy(How = How.Id, Using = "agency_description_ifr")]
-        public IWebElement agencyDescription { get; set; }
+        public IWebElement agencyDescriptionSection { get; set; }
 
         public void uploadLogo(string filePath)
         {
@@ -36,10 +39,11 @@ namespace SubmitAgencyPageObject
             this.agencyLogoUpload.SendKeys(filePath);
         }
 
-        public void fillDesc(string description)
+        public void fillDesc(string content)
         {
-            this.agencyDescription.Clear();
-            this.agencyDescription.SendKeys(description);
+            this.agencyDescriptionSection.Click();
+            this.agencyDescriptionContent.Clear();
+            this.agencyDescriptionContent.SendKeys(content);
         }
     }
 }

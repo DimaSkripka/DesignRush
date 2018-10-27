@@ -18,7 +18,7 @@ namespace SubmitAgencyPageObject
         private readonly IWebDriver driver;
         public WebDriverWait wait;
 
-        private readonly string url = @"http://designrush.com/submit/agency/step/1";
+        private readonly string url = @"http://designrush.devplatform2.com/submit/agency/step/1";
 
 
         public SumbitAgencyPage(IWebDriver browser)
