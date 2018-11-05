@@ -18,6 +18,8 @@ namespace SubmitAgencyPageObject
         private readonly IWebDriver driver;
         public WebDriverWait wait;
 
+        Random random = new Random();
+
         private readonly string url = @"http://designrush.devplatform2.com/submit/agency/step/1";
 
 
@@ -60,13 +62,13 @@ namespace SubmitAgencyPageObject
         public void Submit(string name, string lastname, string email, string phone, string password, string passwordConfirmation)
         {
             this.nameField.Clear();
-            this.nameField.SendKeys(name);
+            this.nameField.SendKeys(name + random.Next(1000000));
 
             this.lastNameField.Clear();
-            this.lastNameField.SendKeys(lastname);
+            this.lastNameField.SendKeys(lastname + random.Next(1000000));
 
             this.emailField.Clear();
-            this.emailField.SendKeys(email);
+            this.emailField.SendKeys(random.Next(1000000) + email);
 
             this.phoneField.Clear();
             this.phoneField.SendKeys(phone);

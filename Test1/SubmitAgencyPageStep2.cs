@@ -18,6 +18,9 @@ namespace SubmitAgencyPageObject
     {
         private readonly IWebDriver driver;
         public WebDriverWait wait;
+        //PhantomJSDriver jSDriver = new PhantomJSDriver();
+        
+
 
         public SubmitAgencyPageStep2(IWebDriver browser)
         {
@@ -28,8 +31,8 @@ namespace SubmitAgencyPageObject
         [FindsBy(How = How.Name, Using = "agency_logo")]
         public IWebElement agencyLogoUpload { get; set; }
 
-        //[FindsBy(How = How.Id, Using = "tinymce")]
-        //public IWebElement agencyDescriptionContent { get; set; }
+        [FindsBy(How = How.Id, Using = "tinymce")]
+        public IWebElement agencyDescriptionContent { get; set; }
 
         //переделать, сделать метод для сбора всех полей, метод перебора и заполнения рандомными данными и сохранениями их в переменные для сравнения
         [FindsBy(How = How.Name, Using = "key_clients[0][title]")]
@@ -63,8 +66,13 @@ namespace SubmitAgencyPageObject
             this.clientField2.SendKeys(client2);
         }
 
-        //[FindsBy(How = How.Id, Using = "agency_description_ifr")]
-        //public IWebElement agencyDescriptionSection { get; set; }
+        public void tinyMCE()
+        {
+            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+            driver.SwitchTo().Frame("agency_description_ifr");
+            js.ExecuteScript("arguments[0].innerHTML = '<h1>CKEditor</h1>Yi Zeng'", agencyDescriptionContent);
+        }
+
 
         public void uploadLogo(string filePath)
         {
@@ -86,6 +94,8 @@ namespace SubmitAgencyPageObject
             this.contentSection2.SendKeys(filePath2);
 
         }
+
+        
 
         //public void test()
         //{

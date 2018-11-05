@@ -20,6 +20,7 @@ namespace SubmitAgencyPageObject
         private readonly IWebDriver driver;
         public WebDriverWait wait;
 
+        Random random = new Random();
 
         public SubmitAgencyPageStep1(IWebDriver browser)
         {
@@ -78,19 +79,19 @@ namespace SubmitAgencyPageObject
             li[rndValue].Click();
         }
 
-
+        
         public void SaveAndContinue(string agencyName, string agencyWebsite, string agencyEmail,string agencyPhone, string agencyYearFounded, string hourlyRate, string facebook, string twitter, string linkedIn, string googlePlus, string instagram, string youTube)
         {
             List<IWebElement> spanElements = new List<IWebElement>(driver.FindElements(By.ClassName("select2-selection__arrow")));
 
             this.agencyNameField.Clear();
-            this.agencyNameField.SendKeys(agencyName);
+            this.agencyNameField.SendKeys(agencyName+random.Next(1000000));
 
             this.agencyWebsiteField.Clear();
             this.agencyWebsiteField.SendKeys(agencyWebsite);
 
             this.agencyEmailField.Clear();
-            this.agencyEmailField.SendKeys(agencyEmail);
+            this.agencyEmailField.SendKeys(random.Next(10000000) + agencyEmail);
 
             spanElements[0].Click();
             GetLi();

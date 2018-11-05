@@ -34,13 +34,13 @@ namespace SubmitAgencyPageObject
             var jSDriver = new PhantomJSDriver();
             SumbitAgencyPage submitAgency = new SumbitAgencyPage(this.driver);
             submitAgency.Navigate();
-            submitAgency.Submit("791Karl88", "791Jhonson88", "dimaskripka1992+791KJ88@gmail.com", @"+380932967718", @"Qwerty123!", @"Qwerty123!");
+            submitAgency.Submit("Test", "Test", "test@test.com", @"+380932967718", @"Qwerty123!", @"Qwerty123!");
             wait.Until(ExpectedConditions.ElementToBeClickable(By.ClassName("alertify-button"))).Click();
 
             Thread.Sleep(4000);
 
             SubmitAgencyPageStep1 step1 = new SubmitAgencyPageStep1(this.driver);
-            step1.SaveAndContinue("791KarlJhonsonAgency88",@"https://qwdqwd.com","dimaskripka1992+791KJ88Agency@gmail.zom","1231231233","1850","77", @"https://www.facebook.com/dmitriy.skripka.3", @"https://twitter.com/dmitry_skripka", @"https://www.linkedin.com/in/dmitry-skripka-a4852b124/", @"https://plus.google.com/u/1/117367210483517711675", @"https://www.instagram.com/angrydmitry/", @"https://www.youtube.com/channel/UCTL3HvVv-q5eRi_6rLnv1Bw?view_as=subscriber");
+            step1.SaveAndContinue("Test",@"https://qwdqwd.com","test@test.com","1231231233","1850","77", @"https://www.facebook.com/dmitriy.skripka.3", @"https://twitter.com/dmitry_skripka", @"https://www.linkedin.com/in/dmitry-skripka-a4852b124/", @"https://plus.google.com/u/1/117367210483517711675", @"https://www.instagram.com/angrydmitry/", @"https://www.youtube.com/channel/UCTL3HvVv-q5eRi_6rLnv1Bw?view_as=subscriber");
 
             Thread.Sleep(4000);
 
@@ -54,8 +54,12 @@ namespace SubmitAgencyPageObject
             //driver.FindElement
             step2.fillClient("client1","client2","client3");
             step2.uploadContent("C:/Users/skripka/Desktop/New folder (2)/New folder/test1.jpg", "C:/Users/skripka/Desktop/New folder (2)/New folder/test2.jpg", "C:/Users/skripka/Desktop/New folder (2)/New folder/test3.jpg");
+            step2.tinyMCE();
 
-            driver.FindElement(By.Id("agency-step-submit-btn")).Click();
+
+            //driver.FindElement(By.Id("agency-step-submit-btn")).Click();
+            
+            
         }
     }
 }
