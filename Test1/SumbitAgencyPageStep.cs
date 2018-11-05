@@ -79,21 +79,13 @@ namespace SubmitAgencyPageObject
             this.passwordConfirmationField.Clear();
             this.passwordConfirmationField.SendKeys(passwordConfirmation);
 
-            this.submitButton.Click();
+           
         }
-        //public void iSSubmitSuccessful(bool isElementfound)
-        //{
 
-
-        //    if (assertCondition != null)
-        //    {
-        //        isElementfound = true;
-        //    }
-        //    else
-        //    {
-        //        isElementfound = false;
-        //    }
-        //    Assert.IsNotNull(isElementfound);
-        //}
+        public void SubmitStep()
+        {
+            submitButton.Click();
+        }
+        
     }
 }

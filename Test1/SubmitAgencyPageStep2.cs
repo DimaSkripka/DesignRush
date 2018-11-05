@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 
 namespace SubmitAgencyPageObject
 {
@@ -18,8 +19,6 @@ namespace SubmitAgencyPageObject
     {
         private readonly IWebDriver driver;
         public WebDriverWait wait;
-        //PhantomJSDriver jSDriver = new PhantomJSDriver();
-        
 
 
         public SubmitAgencyPageStep2(IWebDriver browser)
@@ -53,6 +52,9 @@ namespace SubmitAgencyPageObject
         [FindsBy(How = How.Name, Using = "photo_3")]
         public IWebElement contentSection2 { get; set; }
 
+        [FindsBy(How = How.Id, Using = "agency-step-submit-btn")]
+        public IWebElement saveBtn { get; set; }
+
 
         public void fillClient(string client0, string client1, string client2)
         {
@@ -66,11 +68,13 @@ namespace SubmitAgencyPageObject
             this.clientField2.SendKeys(client2);
         }
 
-        public void tinyMCE()
+        public void tinyMCE(string txtPath)
         {
+            StreamReader streamReader = new StreamReader(txtPath);
             IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+
             driver.SwitchTo().Frame("agency_description_ifr");
-            js.ExecuteScript("arguments[0].innerHTML = '<h1>CKEditor</h1>Yi Zeng'", agencyDescriptionContent);
+            js.ExecuteScript("arguments[0].innerHTML = \"" + streamReader.ReadToEnd() + "\";", agencyDescriptionContent);
         }
 
 
@@ -84,31 +88,18 @@ namespace SubmitAgencyPageObject
         {
             this.contentSection0.Clear();
             this.contentSection0.SendKeys(filePath1);
-            Thread.Sleep(1000);
 
             this.contentSection1.Clear();
             this.contentSection1.SendKeys(filePath2);
-            Thread.Sleep(1000);
 
             this.contentSection2.Clear();
             this.contentSection2.SendKeys(filePath2);
 
         }
 
-        
-
-        //public void test()
-        //{
-        //    driver.SwitchTo().Frame(0);
-        //    driver.FindElement(By.Id("agency_description_ifr")).FindElement(By.Id("tinymce"));
-        //    driver.FindElement(By.Name("key_clients[0][title]")).Click();
-        //}
-
-        //public void fillDesc(string content)
-        //{
-        //    this.agencyDescriptionSection.Click();
-        //    this.agencyDescriptionContent.Clear();
-        //    this.agencyDescriptionContent.SendKeys(content);
-        //}
+        public void SubmitStep()
+        {
+            saveBtn.Click();
+        }
     }
 }

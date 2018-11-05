@@ -68,21 +68,13 @@ namespace SubmitAgencyPageObject
         [FindsBy(How = How.Id, Using = "agency-step-submit-btn")]
         public IWebElement saveBtn { get; set; }
 
+        [FindsBy(How = How.ClassName, Using = "select2-selection__arrow")]
+        public IList<IWebElement> spanElements { get; set; }
 
-        public void GetLi()
+
+        public void FillGeneralInformation(string agencyName, string agencyWebsite, string agencyEmail,string agencyPhone, string agencyYearFounded, string hourlyRate, string facebook, string twitter, string linkedIn, string googlePlus, string instagram, string youTube)
         {
-            List<IWebElement> li = new List<IWebElement>(driver.FindElement(By.ClassName("select2-results__options")).FindElements(By.TagName("li")));
-
-            Random rnd = new Random();
-            int rndValue = rnd.Next(0, li.Count);
-
-            li[rndValue].Click();
-        }
-
-        
-        public void SaveAndContinue(string agencyName, string agencyWebsite, string agencyEmail,string agencyPhone, string agencyYearFounded, string hourlyRate, string facebook, string twitter, string linkedIn, string googlePlus, string instagram, string youTube)
-        {
-            List<IWebElement> spanElements = new List<IWebElement>(driver.FindElements(By.ClassName("select2-selection__arrow")));
+            HelperClass helper = new HelperClass(this.driver);
 
             this.agencyNameField.Clear();
             this.agencyNameField.SendKeys(agencyName+random.Next(1000000));
@@ -94,7 +86,7 @@ namespace SubmitAgencyPageObject
             this.agencyEmailField.SendKeys(random.Next(10000000) + agencyEmail);
 
             spanElements[0].Click();
-            GetLi();
+            helper.GetRandomLi("select2-results__options", "li");
 
             this.agencyPhoneField.Clear();
             this.agencyPhoneField.SendKeys(agencyPhone);
@@ -106,10 +98,10 @@ namespace SubmitAgencyPageObject
             this.agencyHourlyRate.SendKeys(hourlyRate);
 
             spanElements[1].Click();
-            GetLi();
+            helper.GetRandomLi("select2-results__options", "li");
 
             spanElements[2].Click();
-            GetLi();
+            helper.GetRandomLi("select2-results__options", "li");
 
             this.agencySoialFB.Clear();
             this.agencySoialFB.SendKeys(facebook);
@@ -128,8 +120,11 @@ namespace SubmitAgencyPageObject
 
             this.agencySoialYouTb.Clear();
             this.agencySoialYouTb.SendKeys(youTube);
+        }
 
-            this.saveBtn.Click();
+        public void SubmitStep()
+        {
+            saveBtn.Click();
         }
     }
 }

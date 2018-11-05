@@ -62,6 +62,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HelperClass.cs" />
     <Compile Include="SubmitAgencyPageStep1.cs" />
     <Compile Include="SubmitAgencyPageStep2.cs" />
     <Compile Include="SumbitAgencyPageStep.cs" />
