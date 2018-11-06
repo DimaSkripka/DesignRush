@@ -36,7 +36,7 @@ namespace SubmitAgencyPageObject
             return someRandomData;
         }
 
-        public void GetRandomLi(string dropDownLocator, string liLocator)
+        public void SelectRandomLi(string dropDownLocator, string liLocator)
         {
             List<IWebElement> li = new List<IWebElement>(driver.FindElement(By.ClassName(dropDownLocator)).FindElements(By.TagName(liLocator)));
             int rndValue = rnd.Next(0, li.Count);

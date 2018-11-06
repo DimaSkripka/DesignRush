@@ -86,7 +86,7 @@ namespace SubmitAgencyPageObject
             this.agencyEmailField.SendKeys(random.Next(10000000) + agencyEmail);
 
             spanElements[0].Click();
-            helper.GetRandomLi("select2-results__options", "li");
+            helper.SelectRandomLi("select2-results__options", "li");
 
             this.agencyPhoneField.Clear();
             this.agencyPhoneField.SendKeys(agencyPhone);
@@ -98,10 +98,10 @@ namespace SubmitAgencyPageObject
             this.agencyHourlyRate.SendKeys(hourlyRate);
 
             spanElements[1].Click();
-            helper.GetRandomLi("select2-results__options", "li");
+            helper.SelectRandomLi("select2-results__options", "li");
 
             spanElements[2].Click();
-            helper.GetRandomLi("select2-results__options", "li");
+            helper.SelectRandomLi("select2-results__options", "li");
 
             this.agencySoialFB.Clear();
             this.agencySoialFB.SendKeys(facebook);
