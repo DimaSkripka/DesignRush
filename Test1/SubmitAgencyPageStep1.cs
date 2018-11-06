@@ -47,22 +47,22 @@ namespace SubmitAgencyPageObject
         [FindsBy(How = How.Name, Using = "hourly_rate")]
         public IWebElement agencyHourlyRate { get; set; }
 
-        [FindsBy(How = How.Name, Using = "social_networks_fb")]
+        [FindsBy(How = How.Name, Using = "social_networks[facebook]")]
         public IWebElement agencySoialFB { get; set; }
 
-        [FindsBy(How = How.Name, Using = "social_networks_tw")]
+        [FindsBy(How = How.Name, Using = "social_networks[twitter]")]
         public IWebElement agencySoialTW { get; set; }
 
-        [FindsBy(How = How.Name, Using = "social_networks_in")]
+        [FindsBy(How = How.Name, Using = "social_networks[linkedin]")]
         public IWebElement agencySoialIN { get; set; }
 
-        [FindsBy(How = How.Name, Using = "social_networks_gplus")]
+        [FindsBy(How = How.Name, Using = "social_networks[google_plus]")]
         public IWebElement agencySoialGPlus { get; set; }
 
-        [FindsBy(How = How.Name, Using = "social_networks_instagram")]
+        [FindsBy(How = How.Name, Using = "social_networks[instagram]")]
         public IWebElement agencySoialInst { get; set; }
 
-        [FindsBy(How = How.Name, Using = "social_networks_youtube")]
+        [FindsBy(How = How.Name, Using = "social_networks[youtube]")]
         public IWebElement agencySoialYouTb { get; set; }
 
         [FindsBy(How = How.Id, Using = "agency-step-submit-btn")]

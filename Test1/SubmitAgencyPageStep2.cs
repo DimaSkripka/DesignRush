@@ -28,10 +28,13 @@ namespace SubmitAgencyPageObject
         }
 
         [FindsBy(How = How.Name, Using = "agency_logo")]
-        public IWebElement agencyLogoUpload { get; set; }
+        public IWebElement agencyLogoUploadSection { get; set; }
+      
+        [FindsBy(How = How.Id, Using = "agency_description_ifr")]
+        public IWebElement tinyMCEFrameArea { get; set; }
 
         [FindsBy(How = How.Id, Using = "tinymce")]
-        public IWebElement agencyDescriptionContent { get; set; }
+        public IWebElement tinyMCETextAreaBody { get; set; }
 
         //переделать, сделать метод для сбора всех полей, метод перебора и заполнения рандомными данными и сохранениями их в переменные для сравнения
         [FindsBy(How = How.Name, Using = "key_clients[0][title]")]
@@ -44,20 +47,22 @@ namespace SubmitAgencyPageObject
         public IWebElement clientField2 { get; set; }
 
         [FindsBy(How = How.Name, Using = "photo_1")]
-        public IWebElement contentSection0 { get; set; }
+        public IWebElement companyPhoto0 { get; set; }
 
         [FindsBy(How = How.Name, Using = "photo_2")]
-        public IWebElement contentSection1 { get; set; }
+        public IWebElement companyPhoto1 { get; set; }
 
         [FindsBy(How = How.Name, Using = "photo_3")]
-        public IWebElement contentSection2 { get; set; }
+        public IWebElement companyPhoto2 { get; set; }
 
         [FindsBy(How = How.Id, Using = "agency-step-submit-btn")]
-        public IWebElement saveBtn { get; set; }
+        public IWebElement saveBtn2 { get; set; }
 
 
-        public void fillClient(string client0, string client1, string client2)
+        public void SubmitStep(string client0, string client1, string client2)
         {
+            HelperClass helper = new HelperClass(this.driver);
+
             this.clientField0.Clear();
             this.clientField0.SendKeys(client0);
 
@@ -66,40 +71,14 @@ namespace SubmitAgencyPageObject
 
             this.clientField2.Clear();
             this.clientField2.SendKeys(client2);
-        }
+            
+            helper.uploadPicture(@"C:/Users/skripka/Desktop/TestData/testupload.jpg", this.agencyLogoUploadSection);
+            helper.uploadPicture(@"C:/Users/skripka/Desktop/TestData/test1.jpg", this.companyPhoto0);
+            helper.uploadPicture(@"C:/Users/skripka/Desktop/TestData/test2.jpg", this.companyPhoto1);
+            helper.uploadPicture(@"C:/Users/skripka/Desktop/TestData/test3.jpg", this.companyPhoto2);
+            helper.TinyMCEFillContent(@"C:/Users/skripka/Desktop/TestData/TestDescription.txt",tinyMCEFrameArea ,tinyMCETextAreaBody);
 
-        public void tinyMCE(string txtPath)
-        {
-            StreamReader streamReader = new StreamReader(txtPath);
-            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
-
-            driver.SwitchTo().Frame("agency_description_ifr");
-            js.ExecuteScript("arguments[0].innerHTML = \"" + streamReader.ReadToEnd() + "\";", agencyDescriptionContent);
-        }
-
-
-        public void uploadLogo(string filePath)
-        {
-            this.agencyLogoUpload.Clear();
-            this.agencyLogoUpload.SendKeys(filePath);
-        }
-
-        public void uploadContent (string filePath1, string filePath2, string filePath3)
-        {
-            this.contentSection0.Clear();
-            this.contentSection0.SendKeys(filePath1);
-
-            this.contentSection1.Clear();
-            this.contentSection1.SendKeys(filePath2);
-
-            this.contentSection2.Clear();
-            this.contentSection2.SendKeys(filePath2);
-
-        }
-
-        public void SubmitStep()
-        {
-            saveBtn.Click();
+            this.saveBtn2.Click();
         }
     }
 }

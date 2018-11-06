@@ -14,7 +14,7 @@ using System.Linq;
 namespace SubmitAgencyPageObject
 {
     [TestClass]
-    public class SubmitHelper
+    public class TestExecuteClass
     {
         
         public IWebDriver driver { get; set; }
@@ -34,10 +34,7 @@ namespace SubmitAgencyPageObject
             SumbitAgencyPage submitAgency = new SumbitAgencyPage(this.driver);
             submitAgency.Navigate();
             submitAgency.Submit("Test", "Test", "test@test.com", @"+380932967718", @"Qwerty123!", @"Qwerty123!");
-            submitAgency.SubmitStep();
             wait.Until(ExpectedConditions.ElementToBeClickable(By.ClassName("alertify-button"))).Click();
-
-
             Thread.Sleep(2000);
 
             SubmitAgencyPageStep1 step1 = new SubmitAgencyPageStep1(this.driver);
@@ -46,15 +43,13 @@ namespace SubmitAgencyPageObject
             Thread.Sleep(2000);
 
             SubmitAgencyPageStep2 step2 = new SubmitAgencyPageStep2(this.driver);
-            step2.uploadLogo(@"C:/Users/skripka/Desktop/TestData/testupload.jpg");
-            step2.fillClient("client1","client2","client3");
-            step2.uploadContent("C:/Users/skripka/Desktop/TestData/test1.jpg", "C:/Users/skripka/Desktop/TestData/test2.jpg", "C:/Users/skripka/Desktop/TestData/test3.jpg");
-            step2.tinyMCE("C:/Users/skripka/Desktop/TestData/TestDescription.txt");
+            step2.SubmitStep("client1", "client2", "client3");
             Thread.Sleep(2000);
-            //не работает сабмит
-            step2.SubmitStep();
 
+            //не работает сабмит
+            //step2.SubmitStep();
             //driver.FindElement(By.Id("agency-step-submit-btn")).Click();
+            
         }
     }
 }

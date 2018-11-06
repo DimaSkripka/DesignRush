@@ -79,12 +79,8 @@ namespace SubmitAgencyPageObject
             this.passwordConfirmationField.Clear();
             this.passwordConfirmationField.SendKeys(passwordConfirmation);
 
-           
-        }
-
-        public void SubmitStep()
-        {
-            submitButton.Click();
+            //прописать асерт метод в хелпере
+            this.submitButton.Click();
         }
         
     }
