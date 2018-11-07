@@ -31,19 +31,22 @@ namespace SubmitAgencyPageObject
         [TestMethod]
         public void SubmitAgency()
         {
-            SumbitAgencyPage submitAgency = new SumbitAgencyPage(this.driver);
+            SubmitAgencyPage submitAgency = new SubmitAgencyPage(this.driver);
             submitAgency.Navigate();
-            submitAgency.Submit("Test", "Test", "test@test.com", @"+380932967718", @"Qwerty123!", @"Qwerty123!");
+            submitAgency.SubmitStep("Test", "Test", "test@test.com", @"+380932967718", @"Qwerty123!", @"Qwerty123!");
+
             wait.Until(ExpectedConditions.ElementToBeClickable(By.ClassName("alertify-button"))).Click();
+
             Thread.Sleep(2000);
+
 
             SubmitAgencyPageStep1 step1 = new SubmitAgencyPageStep1(this.driver);
-            step1.FillGeneralInformation("Test",@"https://qwdqwd.com","test@test.com","1231231233","1850","77", @"https://www.facebook.com/dmitriy.skripka.3", @"https://twitter.com/dmitry_skripka", @"https://www.linkedin.com/in/dmitry-skripka-a4852b124/", @"https://plus.google.com/u/1/117367210483517711675", @"https://www.instagram.com/angrydmitry/", @"https://www.youtube.com/channel/UCTL3HvVv-q5eRi_6rLnv1Bw?view_as=subscriber");
-            step1.SubmitStep();
+            step1.SubmitStep("1231231233","1850","77", @"https://www.facebook.com/dmitriy.skripka.3", @"https://twitter.com/dmitry_skripka", @"https://www.linkedin.com/in/dmitry-skripka-a4852b124/", @"https://plus.google.com/u/1/117367210483517711675", @"https://www.instagram.com/angrydmitry/", @"https://www.youtube.com/channel/UCTL3HvVv-q5eRi_6rLnv1Bw?view_as=subscriber");
             Thread.Sleep(2000);
 
+
             SubmitAgencyPageStep2 step2 = new SubmitAgencyPageStep2(this.driver);
-            step2.SubmitStep("client1", "client2", "client3");
+            step2.SubmitStep();
             Thread.Sleep(2000);
 
             //не работает сабмит

@@ -20,8 +20,6 @@ namespace SubmitAgencyPageObject
         private readonly IWebDriver driver;
         public WebDriverWait wait;
 
-        Random random = new Random();
-
         public SubmitAgencyPageStep1(IWebDriver browser)
         {
             this.driver = browser;
@@ -66,27 +64,26 @@ namespace SubmitAgencyPageObject
         public IWebElement agencySoialYouTb { get; set; }
 
         [FindsBy(How = How.Id, Using = "agency-step-submit-btn")]
-        public IWebElement saveBtn { get; set; }
+        public IWebElement saveButton { get; set; }
 
         [FindsBy(How = How.ClassName, Using = "select2-selection__arrow")]
         public IList<IWebElement> spanElements { get; set; }
 
 
-        public void FillGeneralInformation(string agencyName, string agencyWebsite, string agencyEmail,string agencyPhone, string agencyYearFounded, string hourlyRate, string facebook, string twitter, string linkedIn, string googlePlus, string instagram, string youTube)
+        public void SubmitStep(string agencyPhone, string agencyYearFounded, string hourlyRate, string facebook, string twitter, string linkedIn, string googlePlus, string instagram, string youTube)
         {
             HelperClass helper = new HelperClass(this.driver);
 
             this.agencyNameField.Clear();
-            this.agencyNameField.SendKeys(agencyName+random.Next(1000000));
+            this.agencyNameField.SendKeys(helper.GenerateRandomData());
 
             this.agencyWebsiteField.Clear();
-            this.agencyWebsiteField.SendKeys(agencyWebsite);
+            this.agencyWebsiteField.SendKeys(helper.GenerateRandomUrl());
 
             this.agencyEmailField.Clear();
-            this.agencyEmailField.SendKeys(random.Next(10000000) + agencyEmail);
+            this.agencyEmailField.SendKeys(helper.GenerateRandomEmail());
 
-            spanElements[0].Click();
-            helper.SelectRandomLi("select2-results__options", "li");
+            helper.setRandomForAllDropDowns(spanElements);
 
             this.agencyPhoneField.Clear();
             this.agencyPhoneField.SendKeys(agencyPhone);
@@ -96,12 +93,6 @@ namespace SubmitAgencyPageObject
 
             this.agencyHourlyRate.Clear();
             this.agencyHourlyRate.SendKeys(hourlyRate);
-
-            spanElements[1].Click();
-            helper.SelectRandomLi("select2-results__options", "li");
-
-            spanElements[2].Click();
-            helper.SelectRandomLi("select2-results__options", "li");
 
             this.agencySoialFB.Clear();
             this.agencySoialFB.SendKeys(facebook);
@@ -120,11 +111,8 @@ namespace SubmitAgencyPageObject
 
             this.agencySoialYouTb.Clear();
             this.agencySoialYouTb.SendKeys(youTube);
-        }
 
-        public void SubmitStep()
-        {
-            saveBtn.Click();
+            this.saveButton.Click();
         }
     }
 }

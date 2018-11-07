@@ -56,21 +56,21 @@ namespace SubmitAgencyPageObject
         public IWebElement companyPhoto2 { get; set; }
 
         [FindsBy(How = How.Id, Using = "agency-step-submit-btn")]
-        public IWebElement saveBtn2 { get; set; }
+        public IWebElement saveButton { get; set; }
 
 
-        public void SubmitStep(string client0, string client1, string client2)
+        public void SubmitStep()
         {
             HelperClass helper = new HelperClass(this.driver);
 
             this.clientField0.Clear();
-            this.clientField0.SendKeys(client0);
+            this.clientField0.SendKeys(helper.GenerateRandomData());
 
             this.clientField1.Clear();
-            this.clientField1.SendKeys(client1);
+            this.clientField1.SendKeys(helper.GenerateRandomData());
 
             this.clientField2.Clear();
-            this.clientField2.SendKeys(client2);
+            this.clientField2.SendKeys(helper.GenerateRandomData());
             
             helper.uploadPicture(@"C:/Users/skripka/Desktop/TestData/testupload.jpg", this.agencyLogoUploadSection);
             helper.uploadPicture(@"C:/Users/skripka/Desktop/TestData/test1.jpg", this.companyPhoto0);
@@ -78,7 +78,11 @@ namespace SubmitAgencyPageObject
             helper.uploadPicture(@"C:/Users/skripka/Desktop/TestData/test3.jpg", this.companyPhoto2);
             helper.TinyMCEFillContent(@"C:/Users/skripka/Desktop/TestData/TestDescription.txt",tinyMCEFrameArea ,tinyMCETextAreaBody);
 
-            this.saveBtn2.Click();
+            this.saveButton.Click();
+
+            
+            
+
         }
     }
 }

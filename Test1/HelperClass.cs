@@ -29,13 +29,6 @@ namespace SubmitAgencyPageObject
             PageFactory.InitElements(browser, this);
         }
 
-        public string typeRandomData()
-        {
-            int rndValue = rnd.Next(1000000);
-            var someRandomData = "someData" + rndValue;
-            return someRandomData;
-        }
-
         public void SelectRandomLi(string dropDownLocator, string liLocator)
         {
             List<IWebElement> li = new List<IWebElement>(driver.FindElement(By.ClassName(dropDownLocator)).FindElements(By.TagName(liLocator)));
@@ -61,6 +54,40 @@ namespace SubmitAgencyPageObject
             uploadArea.SendKeys(filePath);
         }
 
+        /*use in cases when page has similar drop-downs on page*/
+        public void setRandomForAllDropDowns(IList<IWebElement> spanList)
+        {
+            foreach (var item in spanList)
+            {
+                item.Click();
+                SelectRandomLi("select2-results__options", "li");
+            }
+        }
 
+        public string GenerateRandomData()
+        {
+            int rndValue = rnd.Next(1000000);
+            var someRandomData = "someData" + rndValue;
+            return someRandomData;
+        }
+
+        public string GenerateRandomUrl()
+        {
+            int rndValue = rnd.Next(1000000);
+            string randomUrl = "https://randomUrl" + rndValue + ".com";
+            return randomUrl;
+        }
+
+        public string GenerateRandomEmail()
+        {
+            int rndValue = rnd.Next(1000000);
+            string randomEmail = "randomemail" + rndValue + "@random.com";
+            return randomEmail;
+        }
+
+        public void InsertKeys()
+        {
+            
+        }
     }
 }

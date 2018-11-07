@@ -13,17 +13,15 @@ using System;
 
 namespace SubmitAgencyPageObject
 {
-    public class SumbitAgencyPage
+    public class SubmitAgencyPage
     {
         private readonly IWebDriver driver;
         public WebDriverWait wait;
 
-        Random random = new Random();
-
         private readonly string url = @"http://designrush.devplatform2.com/submit/agency/step/1";
 
 
-        public SumbitAgencyPage(IWebDriver browser)
+        public SubmitAgencyPage(IWebDriver browser)
         {
             this.driver = browser;
             this.driver.Manage().Window.Maximize();
@@ -59,16 +57,18 @@ namespace SubmitAgencyPageObject
         }
 
 
-        public void Submit(string name, string lastname, string email, string phone, string password, string passwordConfirmation)
+        public void SubmitStep(string name, string lastname, string email, string phone, string password, string passwordConfirmation)
         {
+            HelperClass helper = new HelperClass(this.driver);
+
             this.nameField.Clear();
-            this.nameField.SendKeys(name + random.Next(1000000));
+            this.nameField.SendKeys(helper.GenerateRandomData());
 
             this.lastNameField.Clear();
-            this.lastNameField.SendKeys(lastname + random.Next(1000000));
+            this.lastNameField.SendKeys(helper.GenerateRandomData());
 
             this.emailField.Clear();
-            this.emailField.SendKeys(random.Next(1000000) + email);
+            this.emailField.SendKeys(helper.GenerateRandomEmail());
 
             this.phoneField.Clear();
             this.phoneField.SendKeys(phone);

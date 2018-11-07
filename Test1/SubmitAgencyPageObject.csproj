@@ -63,9 +63,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HelperClass.cs" />
+    <Compile Include="SubmitAgencyPage.cs" />
     <Compile Include="SubmitAgencyPageStep1.cs" />
     <Compile Include="SubmitAgencyPageStep2.cs" />
-    <Compile Include="SumbitAgencyPageStep.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestExecuteClass.cs" />
   </ItemGroup>
