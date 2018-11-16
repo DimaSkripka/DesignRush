@@ -29,6 +29,7 @@ namespace SubmitAgencyPageObject
             PageFactory.InitElements(browser, this);
         }
 
+
         public void SelectRandomLi(string dropDownLocator, string liLocator)
         {
             List<IWebElement> li = new List<IWebElement>(driver.FindElement(By.ClassName(dropDownLocator)).FindElements(By.TagName(liLocator)));
@@ -88,6 +89,36 @@ namespace SubmitAgencyPageObject
         public void InsertKeys()
         {
             
+        }
+
+        public void setLocation(IWebElement spanValueField)
+        {
+            spanValueField.Click();
+            List<IWebElement> li = new List<IWebElement>(driver
+                .FindElement(By.ClassName("select2-results"))
+                .FindElements(By.TagName("li")));
+            li[0].Click();
+
+            List<IWebElement> list = new List<IWebElement>(driver.FindElements(By.ClassName("select2-selection__rendered")));
+            for (int i = 0; i < list.Count; i++)
+            {
+                string spanValue = spanValueField.Text;
+                if (spanValue != "Select")
+                {
+                    list.RemoveAt(i);
+                    i --;
+                }
+            }
+
+            IList<IWebElement> secList = driver.FindElements(By.ClassName("select2-selection"));
+            foreach (var item in secList)
+            {
+                item.Click();
+                List<IWebElement> lis = new List<IWebElement>(driver
+                .FindElement(By.ClassName("select2-results"))
+                .FindElements(By.TagName("li")));
+                lis[0].Click();
+            }
         }
     }
 }

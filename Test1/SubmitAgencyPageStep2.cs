@@ -36,7 +36,6 @@ namespace SubmitAgencyPageObject
         [FindsBy(How = How.Id, Using = "tinymce")]
         public IWebElement tinyMCETextAreaBody { get; set; }
 
-        //переделать, сделать метод для сбора всех полей, метод перебора и заполнения рандомными данными и сохранениями их в переменные для сравнения
         [FindsBy(How = How.Name, Using = "key_clients[0][title]")]
         public IWebElement clientField0 { get; set; }
 
@@ -57,32 +56,5 @@ namespace SubmitAgencyPageObject
 
         [FindsBy(How = How.Id, Using = "agency-step-submit-btn")]
         public IWebElement saveButton { get; set; }
-
-
-        public void SubmitStep()
-        {
-            HelperClass helper = new HelperClass(this.driver);
-
-            this.clientField0.Clear();
-            this.clientField0.SendKeys(helper.GenerateRandomData());
-
-            this.clientField1.Clear();
-            this.clientField1.SendKeys(helper.GenerateRandomData());
-
-            this.clientField2.Clear();
-            this.clientField2.SendKeys(helper.GenerateRandomData());
-            
-            helper.uploadPicture(@"C:/Users/skripka/Desktop/TestData/testupload.jpg", this.agencyLogoUploadSection);
-            helper.uploadPicture(@"C:/Users/skripka/Desktop/TestData/test1.jpg", this.companyPhoto0);
-            helper.uploadPicture(@"C:/Users/skripka/Desktop/TestData/test2.jpg", this.companyPhoto1);
-            helper.uploadPicture(@"C:/Users/skripka/Desktop/TestData/test3.jpg", this.companyPhoto2);
-            helper.TinyMCEFillContent(@"C:/Users/skripka/Desktop/TestData/TestDescription.txt",tinyMCEFrameArea ,tinyMCETextAreaBody);
-
-            this.saveButton.Click();
-
-            
-            
-
-        }
     }
 }

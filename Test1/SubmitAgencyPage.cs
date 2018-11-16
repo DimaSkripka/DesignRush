@@ -9,12 +9,15 @@ using OpenQA.Selenium.Support.Events;
 using OpenQA.Selenium.Support.PageObjects;
 using System.Threading.Tasks;
 using System;
+using System.IO;
+
 
 
 namespace SubmitAgencyPageObject
 {
     public class SubmitAgencyPage
     {
+
         private readonly IWebDriver driver;
         public WebDriverWait wait;
 
@@ -56,32 +59,19 @@ namespace SubmitAgencyPageObject
             this.driver.Navigate().GoToUrl(this.url);
         }
 
-
-        public void SubmitStep(string name, string lastname, string email, string phone, string password, string passwordConfirmation)
+        public void check()
         {
-            HelperClass helper = new HelperClass(this.driver);
-
-            this.nameField.Clear();
-            this.nameField.SendKeys(helper.GenerateRandomData());
-
-            this.lastNameField.Clear();
-            this.lastNameField.SendKeys(helper.GenerateRandomData());
-
-            this.emailField.Clear();
-            this.emailField.SendKeys(helper.GenerateRandomEmail());
-
-            this.phoneField.Clear();
-            this.phoneField.SendKeys(phone);
-
-            this.passwordField.Clear();
-            this.passwordField.SendKeys(password);
-
-            this.passwordConfirmationField.Clear();
-            this.passwordConfirmationField.SendKeys(passwordConfirmation);
-
-            //прописать асерт метод в хелпере
-            this.submitButton.Click();
+            StreamWriter streamWriter = new StreamWriter("C:/Users/skripka/Desktop/TestData/Test11.txt");
+            try
+            {
+                var x = driver.FindElement(By.ClassName("form-stasdas22121eps--title"));
+                x.ToString();
+                x.Text.Contains("General Information");
+            }
+            catch (Exception ex)
+            {
+                    streamWriter.WriteLine(ex.ToString());
+            }
         }
-        
     }
 }

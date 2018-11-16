@@ -68,51 +68,5 @@ namespace SubmitAgencyPageObject
 
         [FindsBy(How = How.ClassName, Using = "select2-selection__arrow")]
         public IList<IWebElement> spanElements { get; set; }
-
-
-        public void SubmitStep(string agencyPhone, string agencyYearFounded, string hourlyRate, string facebook, string twitter, string linkedIn, string googlePlus, string instagram, string youTube)
-        {
-            HelperClass helper = new HelperClass(this.driver);
-
-            this.agencyNameField.Clear();
-            this.agencyNameField.SendKeys(helper.GenerateRandomData());
-
-            this.agencyWebsiteField.Clear();
-            this.agencyWebsiteField.SendKeys(helper.GenerateRandomUrl());
-
-            this.agencyEmailField.Clear();
-            this.agencyEmailField.SendKeys(helper.GenerateRandomEmail());
-
-            helper.setRandomForAllDropDowns(spanElements);
-
-            this.agencyPhoneField.Clear();
-            this.agencyPhoneField.SendKeys(agencyPhone);
-
-            this.agencyYearFoundedField.Clear();
-            this.agencyYearFoundedField.SendKeys(agencyYearFounded);
-
-            this.agencyHourlyRate.Clear();
-            this.agencyHourlyRate.SendKeys(hourlyRate);
-
-            this.agencySoialFB.Clear();
-            this.agencySoialFB.SendKeys(facebook);
-
-            this.agencySoialTW.Clear();
-            this.agencySoialTW.SendKeys(twitter);
-
-            this.agencySoialIN.Clear();
-            this.agencySoialIN.SendKeys(linkedIn);
-
-            this.agencySoialGPlus.Clear();
-            this.agencySoialGPlus.SendKeys(googlePlus);
-
-            this.agencySoialInst.Clear();
-            this.agencySoialInst.SendKeys(instagram);
-
-            this.agencySoialYouTb.Clear();
-            this.agencySoialYouTb.SendKeys(youTube);
-
-            this.saveButton.Click();
-        }
     }
 }
