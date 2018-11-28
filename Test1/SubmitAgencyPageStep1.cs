@@ -67,6 +67,11 @@ namespace SubmitAgencyPageObject
         public IWebElement saveButton { get; set; }
 
         [FindsBy(How = How.ClassName, Using = "select2-selection__arrow")]
-        public IList<IWebElement> spanElements { get; set; }
+        public IList<IWebElement> allSpaners { get; set; }
+
+        [FindsBy(How = How.ClassName, Using = "select2-selection__arrow")]
+        [FindsBy(How = How.TagName, Using = "li")]
+        public IList<IWebElement> spanResultList { get; set; }
+
     }
 }

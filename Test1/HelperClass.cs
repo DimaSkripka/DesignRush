@@ -65,6 +65,8 @@ namespace SubmitAgencyPageObject
             }
         }
 
+
+        //random generators 
         public string GenerateRandomData()
         {
             int rndValue = rnd.Next(1000000);
@@ -85,19 +87,41 @@ namespace SubmitAgencyPageObject
             string randomEmail = "randomemail" + rndValue + "@random.com";
             return randomEmail;
         }
+        //random generators 
 
-        public void InsertKeys()
+
+
+        public void selectElementWithScroll(IList<IWebElement> listWithLi)
         {
-            
+            int randomInt = rnd.Next(0, listWithLi.Count());
+
+            bool isElementClicked = true;
+            while (isElementClicked)
+            {
+                try
+                {
+                    listWithLi[randomInt].Click();
+                    isElementClicked = false;
+                }
+                catch (Exception ex)
+                {
+                    Thread.Sleep(100);
+                    driver.FindElement(By.ClassName("mCSB_buttonDown")).Click();
+                }
+            }
         }
 
         public void setLocation(IWebElement spanValueField)
         {
+
             spanValueField.Click();
-            List<IWebElement> li = new List<IWebElement>(driver
+
+            IList<IWebElement> li = driver
                 .FindElement(By.ClassName("select2-results"))
-                .FindElements(By.TagName("li")));
-            li[0].Click();
+                .FindElements(By.TagName("li"));
+
+            selectElementWithScroll(li);
+
 
             List<IWebElement> list = new List<IWebElement>(driver.FindElements(By.ClassName("select2-selection__rendered")));
             for (int i = 0; i < list.Count; i++)
@@ -106,19 +130,34 @@ namespace SubmitAgencyPageObject
                 if (spanValue != "Select")
                 {
                     list.RemoveAt(i);
-                    i --;
+                    i--;
                 }
             }
+        }
 
-            IList<IWebElement> secList = driver.FindElements(By.ClassName("select2-selection"));
-            foreach (var item in secList)
+        public void getFieldsWithDynamicName()
+        {
+            IList<IWebElement> inputs = driver.FindElements(By.TagName("input"));
+
+            List<IWebElement> tt = new List<IWebElement>();
+
+            foreach (var item in inputs)
             {
-                item.Click();
-                List<IWebElement> lis = new List<IWebElement>(driver
-                .FindElement(By.ClassName("select2-results"))
-                .FindElements(By.TagName("li")));
-                lis[0].Click();
+                if (item.GetAttribute("name").EndsWith("[address_1]"))
+                {
+                    tt.Add(item);
+                    //var s = item;
+                }
+                else if (item.GetAttribute("name").EndsWith("[city]"))
+                {
+                    tt.Add(item);
+                }
+                else if (item.GetAttribute("name").EndsWith("[zip]"))
+                {
+                    tt.Add(item);
+                }
             }
+            tt[0].SendKeys("Gotcha!");
         }
     }
 }

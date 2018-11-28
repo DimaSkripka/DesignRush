@@ -68,7 +68,9 @@ namespace SubmitAgencyPageObject
             submitstep1.agencyEmailField.Clear();
             submitstep1.agencyEmailField.SendKeys(helper.GenerateRandomEmail());
 
-            helper.setRandomForAllDropDowns(submitstep1.spanElements);
+            helper.setRandomForAllDropDowns(submitstep1.allSpaners);
+            //submitstep1.spanElement1.Click();
+            //helper.selectElementWithScroll(submitstep1.spanList1);
 
             submitstep1.agencyPhoneField.Clear();
             submitstep1.agencyPhoneField.SendKeys(agencyPhone);
@@ -122,6 +124,14 @@ namespace SubmitAgencyPageObject
             helper.TinyMCEFillContent(@"C:/Users/skripka/Desktop/TestData/TestDescription.txt", submitStep2.tinyMCEFrameArea, submitStep2.tinyMCETextAreaBody);
 
             submitStep2.saveButton.Click();
+
+        }
+
+        public void SubmitStep3()
+        {
+            HelperClass helper = new HelperClass(this.driver);
+            SubmitAgencyPageStep3 submitStep3 = new SubmitAgencyPageStep3(this.driver);
+
 
         }
     }

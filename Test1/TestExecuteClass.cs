@@ -44,7 +44,7 @@ namespace SubmitAgencyPageObject
 
             submitAgency.check();
             SubmitAgencyPageStep1 step1 = new SubmitAgencyPageStep1(this.driver);
-            testscenario.SubmitStep1("1231231233","1850","77", @"https://www.facebook.com/dmitriy.skripka.3", @"https://twitter.com/dmitry_skripka", @"https://www.linkedin.com/in/dmitry-skripka-a4852b124/", @"https://plus.google.com/u/1/117367210483517711675", @"https://www.instagram.com/angrydmitry/", @"https://www.youtube.com/channel/UCTL3HvVv-q5eRi_6rLnv1Bw?view_as=subscriber");
+            testscenario.SubmitStep1("1231231233", "1850", "77", @"https://www.facebook.com/dmitriy.skripka.3", @"https://twitter.com/dmitry_skripka", @"https://www.linkedin.com/in/dmitry-skripka-a4852b124/", @"https://plus.google.com/u/1/117367210483517711675", @"https://www.instagram.com/angrydmitry/", @"https://www.youtube.com/channel/UCTL3HvVv-q5eRi_6rLnv1Bw?view_as=subscriber");
             Thread.Sleep(2000);
 
 
@@ -56,6 +56,14 @@ namespace SubmitAgencyPageObject
 
             SubmitAgencyPageStep3 step3 = new SubmitAgencyPageStep3(this.driver);
             helper.setLocation(step3.spanElementField);
+            helper.getFieldsWithDynamicName();
+            //helper.getTest();
+
+
+            //SelectElement selectElement = new SelectElement(driver.FindElement(By.Name("locations[0][country_id]")));
+
+            //selectElement.SelectByValue("7");
+
         }
     }
 }
