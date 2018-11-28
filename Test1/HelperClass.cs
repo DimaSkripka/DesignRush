@@ -156,8 +156,17 @@ namespace SubmitAgencyPageObject
                 {
                     tt.Add(item);
                 }
+                else if (item.GetAttribute("name").EndsWith("[email]"))
+                {
+                    tt.Add(item);
+                }
             }
             tt[0].SendKeys("Gotcha!");
+        }
+
+        public void getElementWithDynamicName(string name)
+        {
+            return;
         }
     }
 }
