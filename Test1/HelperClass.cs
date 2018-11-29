@@ -139,7 +139,7 @@ namespace SubmitAgencyPageObject
         {
             IList<IWebElement> inputs = driver.FindElements(By.TagName("input"));
 
-            List<IWebElement> tt = new List<IWebElement>();
+            IList<IWebElement> tt = new List<IWebElement>();
 
             foreach (var item in inputs)
             {
@@ -164,9 +164,22 @@ namespace SubmitAgencyPageObject
             tt[0].SendKeys("Gotcha!");
         }
 
-        public void getElementWithDynamicName(string name)
+
+        /*found element with specified tag by end part of element name*/
+
+        public IWebElement getElementWithDynamicName(string tagName, string attributeName)
         {
-            return;
+            IList<IWebElement> tagElements = driver.FindElements(By.TagName(tagName));
+
+            foreach (var element in tagElements)
+            {
+                if (element.GetAttribute(attributeName).EndsWith(attributeName))
+                {
+                   IWebElement newElement = element;
+                    return newElement;
+                }
+            }
+            return null;
         }
     }
 }
