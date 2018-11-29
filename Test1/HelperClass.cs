@@ -167,13 +167,13 @@ namespace SubmitAgencyPageObject
 
         /*found element with specified tag by end part of element name*/
 
-        public IWebElement getElementWithDynamicName(string tagName, string attributeName)
+        public IWebElement getElementWithDynamicName(string tagName, string attributeName, string nameToFind)
         {
             IList<IWebElement> tagElements = driver.FindElements(By.TagName(tagName));
 
             foreach (var element in tagElements)
             {
-                if (element.GetAttribute(attributeName).EndsWith(attributeName))
+                if (element.GetAttribute(attributeName).EndsWith(nameToFind))
                 {
                    IWebElement newElement = element;
                     return newElement;
