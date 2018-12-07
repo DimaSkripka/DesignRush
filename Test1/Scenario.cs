@@ -132,6 +132,10 @@ namespace SubmitAgencyPageObject
             HelperClass helper = new HelperClass(this.driver);
             SubmitAgencyPageStep3 submitStep3 = new SubmitAgencyPageStep3(this.driver);
 
+            submitStep3.Headquarter().SendKeys(helper.GenerateRandomData());
+            submitStep3.city().SendKeys(helper.GenerateRandomData());
+            submitStep3.zipCode().SendKeys(helper.GenerateRandomData());
+            helper.setLocation(submitStep3.spanElementField);
 
         }
     }

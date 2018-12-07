@@ -54,16 +54,18 @@ namespace SubmitAgencyPageObject
             driver.FindElement(By.Id("agency-step-submit-btn")).Click();
             Thread.Sleep(3000);
 
-            SubmitAgencyPageStep3 step3 = new SubmitAgencyPageStep3(this.driver);
-            helper.setLocation(step3.spanElementField);
-            helper.getFieldsWithDynamicName();
+            //SubmitAgencyPageStep3 step3 = new SubmitAgencyPageStep3(this.driver);
+            //helper.setLocation(step3.spanElementField);
+            //helper.getFieldsWithDynamicName();
+
+            testscenario.SubmitStep3();
+
             //helper.getTest();
 
 
             //SelectElement selectElement = new SelectElement(driver.FindElement(By.Name("locations[0][country_id]")));
 
             //selectElement.SelectByValue("7");
-
         }
     }
 }

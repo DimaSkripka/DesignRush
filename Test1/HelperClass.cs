@@ -181,5 +181,20 @@ namespace SubmitAgencyPageObject
             }
             return null;
         }
+
+        public IWebElement getElementWithDynamicName2(string tagName, string attributeName, string nameToFind)
+        {
+            IList<IWebElement> tagElements = driver.FindElements(By.TagName(tagName));
+
+            
+
+            foreach (var element in tagElements)
+            {
+
+                
+            }
+            return null;
+        }
+
     }
 }

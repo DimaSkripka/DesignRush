@@ -20,6 +20,7 @@ namespace SubmitAgencyPageObject
     {
         private readonly IWebDriver driver;
         public WebDriverWait wait;
+        
 
         public SubmitAgencyPageStep3(IWebDriver browser)
         {
@@ -35,6 +36,33 @@ namespace SubmitAgencyPageObject
 
         [FindsBy(How = How.ClassName, Using = "select2-selection")]
         public IWebElement dropDownList { get; set; }
+
+        [FindsBy(How = How.ClassName, Using = "select2-selection")]
+        public IWebElement dropqweDownList { get; set; }
+
+        //public IWebElement Country()
+        //{
+        //    HelperClass helper = new HelperClass(this.driver);
+        //    return helper.getElementWithDynamicName("select", "name", "[country_id]");
+        //}
+
+        public IWebElement Headquarter()
+        {
+            HelperClass helper = new HelperClass(this.driver);
+            return helper.getElementWithDynamicName("input", "name", "[address_1]");
+        }
+
+        public IWebElement city()
+        {
+            HelperClass helper = new HelperClass(this.driver);
+            return helper.getElementWithDynamicName("input", "name", "[city]");
+        }
+
+        public IWebElement zipCode()
+        {
+            HelperClass helper = new HelperClass(this.driver);
+            return helper.getElementWithDynamicName("input", "name", "[zip]");
+        }
 
     }
 }
