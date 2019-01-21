@@ -69,6 +69,7 @@
     <Compile Include="SubmitAgencyPageStep2.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SubmitAgencyPageStep3.cs" />
+    <Compile Include="SubmitAgencyPageStep4.cs" />
     <Compile Include="TestExecuteClass.cs" />
   </ItemGroup>
   <ItemGroup>

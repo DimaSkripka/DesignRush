@@ -69,8 +69,6 @@ namespace SubmitAgencyPageObject
             submitstep1.agencyEmailField.SendKeys(helper.GenerateRandomEmail());
 
             helper.setRandomForAllDropDowns(submitstep1.allSpaners);
-            //submitstep1.spanElement1.Click();
-            //helper.selectElementWithScroll(submitstep1.spanList1);
 
             submitstep1.agencyPhoneField.Clear();
             submitstep1.agencyPhoneField.SendKeys(agencyPhone);
