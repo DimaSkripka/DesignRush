@@ -69,8 +69,7 @@ namespace SubmitAgencyPageObject
         [FindsBy(How = How.ClassName, Using = "select2-selection__arrow")]
         public IList<IWebElement> allSpaners { get; set; }
 
-        [FindsBy(How = How.ClassName, Using = "select2-selection__arrow")]
-        [FindsBy(How = How.TagName, Using = "li")]
+        [FindsBy(How = How.ClassName, Using = "select2-dropdown")]
         public IList<IWebElement> spanResultList { get; set; }
 
     }

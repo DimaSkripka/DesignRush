@@ -33,8 +33,7 @@ namespace SubmitAgencyPageObject
         public void SelectRandomLi(string dropDownLocator, string liLocator)
         {
             List<IWebElement> li = new List<IWebElement>(driver.FindElement(By.ClassName(dropDownLocator)).FindElements(By.TagName(liLocator)));
-            int rndValue = rnd.Next(0, li.Count);
-            li[rndValue].Click();
+            selectElementWithScroll(li);
         }
 
 
